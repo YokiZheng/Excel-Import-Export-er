@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DataInfoMapper">
+    <insert id="insertDataInfo" parameterType="tyj.excelbrandnew.entity.DataInfo">
+        INSERT INTO data_info (excel_file_id, header_id, sheet_no, row_index, column_index, cell_value, cell_style, is_merged, merge_start_column, merge_end_column, merge_start_row, merge_end_row)
+        VALUES (#{excelFileId}, #{headerId}, #{sheetNo}, #{rowIndex}, #{columnIndex}, #{cellValue}, #{cellStyle}, #{isMerged}, #{mergeStartColumn}, #{mergeEndColumn}, #{mergeStartRow}, #{mergeEndRow})
+    </insert>
+
+    <select id="selectDataByExcelFileId" resultType="tyj.excelbrandnew.entity.DataInfo" parameterType="java.lang.Long">
+        SELECT * FROM data_info WHERE excel_file_id = #{excelFileId}
+    </select>
+</mapper>

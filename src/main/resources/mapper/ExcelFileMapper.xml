@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ExcelFileMapper">
+    <insert id="insertExcelFile" parameterType="tyj.excelbrandnew.entity.ExcelFile">
+        <!-- 插入语句 -->
+        INSERT INTO excel_file (file_name, upload_time)
+        VALUES (#{fileName}, #{uploadTime})
+
+        <!-- 使用 selectKey 来获取插入后的主键 ID -->
+        <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+</mapper>

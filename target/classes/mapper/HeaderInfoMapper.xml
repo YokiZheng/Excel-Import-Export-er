@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="HeaderInfoMapper">
+    <insert id="insertHeaderInfo" parameterType="tyj.excelbrandnew.entity.HeaderInfo">
+        <!-- 插入语句 -->
+        INSERT INTO header_info (excel_file_id, column_name, column_index, row_index, cell_style, is_merged, merge_start_column, merge_end_column, merge_start_row, merge_end_row)
+        VALUES (#{excelFileId}, #{columnName}, #{columnIndex}, #{rowIndex}, #{cellStyle}, #{isMerged}, #{mergeStartColumn}, #{mergeEndColumn}, #{mergeStartRow}, #{mergeEndRow})
+
+        <!-- 使用 selectKey 来获取插入后的主键 ID -->
+        <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="selectHeaderByExcelFileId" resultType="tyj.excelbrandnew.entity.HeaderInfo" parameterType="java.lang.Long">
+        SELECT * FROM header_info WHERE excel_file_id = #{excelFileId}
+    </select>
+
+</mapper>

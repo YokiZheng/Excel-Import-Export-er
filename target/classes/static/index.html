@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel 处理</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- 上传文件的容器 -->
+  <div class="container">
+    <h1>上传 Excel</h1>
+    <div class="form-group">
+      <label for="file">上传 Excel 文件</label>
+      <input type="file" id="file" name="file" required>
+      <div class="tooltip">请选择要上传的 Excel 文件</div>
+    </div>
+    <div class="form-group">
+      <label for="startHeaderRow">表头起始行</label>
+      <input type="number" id="startHeaderRow" name="startHeaderRow" placeholder="输入表头起始行" min="1" required>
+      <div class="tooltip">输入表头开始的行号，例如 1</div>
+    </div>
+    <div class="form-group">
+      <label for="endHeaderRow">表头结束行</label>
+      <input type="number" id="endHeaderRow" name="endHeaderRow" placeholder="输入表头结束行" min="1" required>
+      <div class="tooltip">输入表头结束的行号，例如 2</div>
+    </div>
+    <div class="form-group">
+      <label for="startDataRow">数据起始行</label>
+      <input type="number" id="startDataRow" name="startDataRow" placeholder="输入数据起始行" min="1" required>
+      <div class="tooltip">输入数据开始的行号，例如 3</div>
+    </div>
+    <div class="form-group">
+      <label for="endDataRow">数据结束行</label>
+      <input type="number" id="endDataRow" name="endDataRow" placeholder="输入数据结束行" min="1" required>
+      <div class="tooltip">输入数据结束的行号，例如 100</div>
+    </div>
+    <div class="form-group">
+      <label for="columnCount">列数</label>
+      <input type="number" id="columnCount" name="columnCount" placeholder="输入列数" min="1" required>
+      <div class="tooltip">输入表头和数据的总列数，例如 5</div>
+    </div>
+    <div class="form-group">
+      <label for="templateName">模板名称</label>
+      <input type="text" id="templateName" name="templateName" placeholder="输入模板名称" required>
+      <div class="tooltip">为模板命名，例如 "我的模板"</div>
+    </div>
+    <div class="form-group">
+      <button onclick="uploadExcel()">上传 Excel</button>
+    </div>
+  </div>
+
+  <!-- 下载模板的容器 -->
+  <div class="container">
+    <h1>下载模板</h1>
+    <div class="form-group">
+      <label for="excelFileIdDownload">文件 ID</label>
+      <input type="number" id="excelFileIdDownload" name="excelFileId" placeholder="输入文件 ID" required>
+      <div class="tooltip">输入要下载的 Excel 文件的 ID</div>
+    </div>
+    <div class="form-group">
+      <button onclick="downloadExcel()">下载 Excel 文件</button>
+    </div>
+  </div>
+</div>
+
+<!-- 弹窗元素 -->
+<div id="popup" class="popup"></div>
+
+<script src="index.js"></script>
+</body>
+</html>
